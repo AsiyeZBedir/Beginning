@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sayı Tahmin Oyunu</title>
+</head>
+<body>
+    <h1>Sayı Tahmin Oyunu</h1>
+    <p>1 ile 100 arasında bir sayı tahmin edin.</p>
+    
+    <input type="number" id="guessInput">
+    <button onclick="checkGuess()">Tahmin Et</button>
+    <p id="message"></p>
+
+    <script>
+        // Rastgele bir sayı seç
+        const targetNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            const guess = parseInt(document.getElementById("guessInput").value);
+            attempts++;
+
+            if (guess === targetNumber) {
+                document.getElementById("message").textContent = `Tebrikler! ${attempts} denemede doğru sayıyı tahmin ettiniz.`;
+            } else if (guess < targetNumber) {
+                document.getElementById("message").textContent = "Daha yüksek bir sayı deneyin.";
+            } else {
+                document.getElementById("message").textContent = "Daha düşük bir sayı deneyin.";
+            }
+        }
+    </script>
+</body>
+</html>
