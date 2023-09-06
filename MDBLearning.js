@@ -57,10 +57,19 @@ User.find({ age: { $gt: 25 } }, (err, users) => {
 });
 
 // Update a user's age
-User.updateOne({ name: 'John Doe' }, { $set: { age: 35 } }, (err, result) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log('User updated successfully:', result);
+User.updateOne(
+  // Filter: Specifies which document(s) to update
+  { name: 'John Doe' },
+
+  // Update: Specifies the modifications to be made
+  { $set: { age: 35 } },
+
+  // Callback function to handle errors and the result
+  (err, result) => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log('User updated successfully:', result);
+    }
   }
-});
+);
